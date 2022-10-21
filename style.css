@@ -1,10 +1,13 @@
 /* Images created by: https://unsplash.com/@pawel_czerwinski */
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap');
 
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
+  font-family: 'League Spartan', sans-serif;
   margin: 0;
   min-height: 100vh;
   background: #c9ced3;
@@ -15,13 +18,29 @@ body {
   font-size: 12px;
 }
 
-
+.player-container {
+  height: 500px;
+  width: 400px;
+  background: #e7e7e7;
+  border-radius: 20px;
+  box-shadow: 0 15px 20px 5px rgba(0, 0, 0, 0.3) ; /*horizontal, vertical offset, blur, spread */
+}
 
 .img-container {
-
+  height: 300px;
+  width: 300px;
   position: relative;
   top: -50px;
-  left: 50px;
+  left: 50px; /*center the image */
+}
+
+.img-container img {
+ height: 100%;
+ width: 100%;
+ object-fit: cover;
+ border-radius: 20px;
+ box-shadow: 0 5px 20px 5px rgba(0, 0, 0, 0.5) ; /*horizontal, vertical offset, blur, spread */
+
 }
 
 
@@ -76,10 +95,13 @@ h3 {
   font-size: 30px;
   color: rgb(129, 129, 129);
   margin-right: 30px;
-
+  cursor: pointer;
+  user-select: none;
 }
 
-
+.fas:hover {
+  filter: brightness(80%);
+}
 
 .main-button {
   font-size: 40px;
@@ -88,8 +110,10 @@ h3 {
 }
 
 /* Media Query: iPhone (Vertical) */
-@media screen and (max-width: 376px) {
-
+@media screen and (max-width: 400px) {
+  .player-container {
+    width: 95vw;
+  }
 
   .img-container {
     left: 29px;
