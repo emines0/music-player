@@ -2,9 +2,12 @@ const image = document.querySelector('img');
 const title = document.getElementById('title');
 const artist = document.getElementById('artist');
 const music = document.querySelector('audio');
+const progressContainer = document.getElementById('progress-container');
+const progress = document.getElementById('progress');
 const prevBtn = document.getElementById('prev');
 const playBtn = document.getElementById('play');
 const nextBtn = document.getElementById('next');
+
 
 //Music
 const songs = [
@@ -84,10 +87,21 @@ function loadSong(song) {
     image.src = `./img/${song.name}.jpg`;
 }
 
+// Update Progress Bar & Time
+function updateProgressBar(e) {
+    if(isPlaying) {
+        const {duration, currentTime} = e.srcElement;
+        // Update progress bar width 
+        const progressPercent = (currentTime / duration) * 100;
+        progress.style.width = `${progressPercent}%`;
+    }
+}
+
 //Event Listeners
 playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong() ));
 prevBtn.addEventListener('click', prevSong);
 nextBtn.addEventListener('click', nextSong);
+music.addEventListener('timeupdate', updateProgressBar);
 
 // On Load - select first song
 loadSong(songs[songIndex]);
